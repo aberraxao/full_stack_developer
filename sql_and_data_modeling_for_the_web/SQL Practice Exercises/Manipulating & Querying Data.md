@@ -30,7 +30,7 @@ INSERT INTO vehicles (make, model, driver_id) VALUES ('Renault', 'Megane', 1);
 
 2.1. Select all driver records
 ```sql
-SELECT * from drivers;
+SELECT * FROM drivers;
 ```
 2.2 Select all vehicle records
 ```sql
@@ -53,19 +53,30 @@ INSERT INTO vehicles (make, model, driver_id) VALUES ('Fiat', 'Punto', 1);
 
 1. Select all vehicles owned by driver with ID 3.
 ```sql
-SELECT * FROM vehicles WHERE driver_id = 3;
+SELECT *
+ FROM vehicles
+ WHERE driver_id = 3;
 ```
 2. Select all vehicles owned by driver with name 'Sarah' (without knowing their ID).
 ```sql
-select vehicles.* from vehicles inner join drivers on drivers.id = vehicles.driver_id WHERE drivers.first_name='Sarah';
+SELECT vehicles.*
+ FROM vehicles
+ INNER JOIN drivers ON drivers.id = vehicles.driver_id
+ WHERE drivers.first_name='Sarah';
 ```
 3. Show a table of the number of vehicles owned per driver.
 ```sql
-select drivers.first_name, COUNT(vehicles.driver_id) from vehicles inner join drivers on drivers.id = vehicles.driver_id GROUP BY drivers.first_name;
+SELECT drivers.first_name, COUNT(vehicles.driver_id)
+ FROM vehicles
+ INNER JOIN drivers ON drivers.id = vehicles.driver_id
+ GROUP BY drivers.first_name;
 ```
 4. Show the number of drivers that own a Nissan model.
 ```sql
-select Make, COUNT(Make) from vehicles GROUP BY Make HAVING Make='Nissan';
+SELECT Make, COUNT(Make)
+ FROM vehicles
+ GROUP BY Make
+ HAVING Make='Nissan';
 ```
 
 ## Structuring Data
@@ -82,8 +93,10 @@ UPDATE vehicles SET colour = 'blue' WHERE Make <> 'Seat';
 3. Add contact information (email, address) to the drivers table.
 ```sql
 ALTER TABLE drivers ADD COLUMN email VARCHAR, ADD COLUMN address VARCHAR;
-UPDATE drivers SET email = 'manuel@email.com', address='Lisbon' WHERE first_name = 'Manuel';
-UPDATE drivers SET email = 'maria@email.com', address='Coimbra' WHERE first_name = 'Maria';
+UPDATE drivers SET email = 'manuel@email.com', address='Lisbon'
+ WHERE first_name = 'Manuel';
+UPDATE drivers SET email = 'maria@email.com', address='Coimbra'
+ WHERE first_name = 'Maria';
 ```
 
 ## Challenges - Using Timestamps
@@ -98,6 +111,8 @@ UPDATE vehicles SET register_date = '2020-04-22' WHERE Make = 'Seat';
 UPDATE vehicles SET register_date = '2019-06-22' WHERE Make = 'Dacia';
 UPDATE vehicles SET register_date = '2021-06-22' WHERE Make = 'Fiat';
 
-select drivers.*, vehicles.ID AS vehicle_id from vehicles inner join drivers on drivers.id = vehicles.driver_id
-where vehicles.register_date > NOW() AND vehicles.register_date <= NOW() + '30 day';
+SELECT drivers.*, vehicles.ID AS vehicle_id
+ FROM vehicles
+ INNER JOIN drivers ON drivers.id = vehicles.driver_id
+ WHERE vehicles.register_date > NOW() AND vehicles.register_date <= NOW() + '30 day';
 ```
