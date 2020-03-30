@@ -1,7 +1,8 @@
-#Manipulating & Querying Data
-website: https://sqliteonline.com
-info: https://www.postgresqltutorial.com
+# SQL Practice Exercises
+* [SQL environment](https://sqliteonline.com)
+* [PostgreSQL Tutorial Official Website](https://www.postgresqltutorial.com)
 
+## Manipulating & Querying Data
 1. Insert a few records into both drivers and vehicles. Include 3 records of drivers who have vehicles, belonging in the vehicles table.
 ```sql
 create table drivers (
@@ -48,7 +49,7 @@ UPDATE vehicles SET driver_id = DEFAULT WHERE driver_id = 2;
 INSERT INTO vehicles (make, model, driver_id) VALUES ('Fiat', 'Punto', 1);
 ```
 
-#Joins & Group Bys
+## Joins & Group Bys
 
 1. Select all vehicles owned by driver with ID 3.
 ```sql
@@ -67,7 +68,7 @@ select drivers.first_name, COUNT(vehicles.driver_id) from vehicles inner join dr
 select Make, COUNT(Make) from vehicles GROUP BY Make HAVING Make='Nissan';
 ```
 
-#Structuring Data
+## Structuring Data
 
 1. Add information about vehicle color.
 ```sql
@@ -85,7 +86,7 @@ UPDATE drivers SET email = 'manuel@email.com', address='Lisbon' WHERE first_name
 UPDATE drivers SET email = 'maria@email.com', address='Coimbra' WHERE first_name = 'Maria';
 ```
 
-#Challenges - Using Timestamps
+## Challenges - Using Timestamps
 1. Update vehicles table to show date of registration information
 ```sql
 ALTER TABLE vehicles ADD COLUMN register_date TIMESTAMP;
