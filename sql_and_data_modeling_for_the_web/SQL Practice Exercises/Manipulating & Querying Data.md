@@ -1,6 +1,4 @@
 # SQL Practice Exercises
-* [SQL environment](https://sqliteonline.com)
-* [PostgreSQL Tutorial Official Website](https://www.postgresqltutorial.com)
 
 ## Manipulating & Querying Data
 1. Insert a few records into both drivers and vehicles. Include 3 records of drivers who have vehicles, belonging in the vehicles table.
